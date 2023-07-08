@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Pizza</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="pizza.js" defer></script>
+    <script src="style.css" defer></script>
+
+</head>
+
+<body>
+
+
+    <img src="" alt=""
+        srcset="https://images.search.yahoo.com/search/images;_ylt=AwrErL05e1NkoywMJzVXNyoA;_ylu=Y29sbwNiZjEEcG9zAzEEdnRpZAMEc2VjA3Nj?p=pizza+image&type=E210US91105G0&ei=UTF-8&fr=mcafee&th=106.7&tw=171&imgurl=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2017%2F11%2F22%2F371886-food-pizza.jpg&rurl=https%3A%2F%2Fwallup.net%2Ffood-pizza-9%2F&size=766KB&name=food%2C+Pizza+Wallpapers+HD+%2F+Desktop+and+Mobile+Backgrounds&oid=3&h=1600&w=2560&turl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ZZsn6lD6PCjocBzx1tuu1QHaEo%26pid%3DApi%26rs%3D1%26c%3D1%26qlt%3D95%26w%3D171%26h%3D106&tt=food%2C+Pizza+Wallpapers+HD+%2F+Desktop+and+Mobile+Backgrounds&sigr=sGthpKpArCqD&sigit=5USmaEs4E61t&sigi=ftAH3gs6AHrl&sign=DLrMC1hiK8ko&sigt=DLrMC1hiK8ko">
+    <h1 style="text-align: center;">Perfect Pizza</h1>
+    <hr>
+    <hr>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    
+    <div class="shopping_cart">
+        <h1 style="text-align: center;">Order Pizza</h1>
+
+        <div x-data="{ smallTitle: 'Small', mediumTitle: 'Medium',
+        largeTitle: 'Large', smallPizzaTotal: 0, mediumPizzaTotal: 0,
+        largePizzaTotal: 0, totalCostTitle: 'Total Cost', totalCost: 0 }">
+            <div class="cart">
+                
+                <div class="ss">
+                    <span x-text="smallTitle"></span>
+                    <button @click=" smallPizzaTotal += 49;">+</button>
+                    <button @click=" if( smallPizzaTotal > 0 ){ 
+                    smallPizzaTotal -= 49 }">-</button>
+                    <span x-text="smallPizzaTotal"></span>
+                </div>
+                <div class="mm">
+                    <span x-text="mediumTitle"></span>
+                    <button @click=" mediumPizzaTotal += 89;">+</button>
+                    <button @click=" if( mediumPizzaTotal > 0 ){ 
+                    mediumPizzaTotal -= 89 }">-</button>
+                    <span x-text="mediumPizzaTotal"></span>
+                </div>
+                <div class="ll">
+                    <span x-text="largeTitle"></span>
+                    <button @click=" largePizzaTotal += 129;">+</button>
+                    <button @click=" if( largePizzaTotal > 0 ){ 
+                    largePizzaTotal -= 129 }">-</button>
+                    <span x-text="largePizzaTotal"></span>
+                </div>
+                <div class="tt">
+                    <h1 style="text-align: center;">Pizza Cart</h1>
+                    <span x-text="totalCostTitle"></span>
+                    <span x-text="totalCost = smallPizzaTotal + mediumPizzaTotal + largePizzaTotal" ></span>
+                </div>
+            </div>
+
+
+    <hr>
+    <hr>
+    <div class="pizza small_pizza">
+
+        <h2>Small Pizza</h2>
+        <img src="pizza 22.png" width="100">
+        <h3>R49.00</h3>
+        <div>
+            <br>small pizza with 3 topping </br>
+            <br> lover meat pizza</br>
+            <br>chesse and onion pizza</br>
+            <br>maxican chicken pizza </br>
+        </div>
+    </div>
+
+    <div class="pizza medium_pizza">
+        <h2>Medium Pizza</h2>
+        <img src="pizza 22.png" width="125">
+        <h3>R89.00</h3>
+        <div>
+            <br>medium pizza with 3 topping </br>
+            <br> margeritha pizza</br>
+            <br>vegetables pizza</br>
+            <br>sweet and sour pizza</br>
+        </div>
+    </div>
+
+    <div class="pizza large_pizza">
+        <h2>Large Pizza</h2>
+        <img src="pizza 22.png" width="150">
+        <h3>R129.00</h3>
+        <div>
+            <br>large pizza with 3 topping </br>
+            <br> triple chicken feast pizza</br>
+            <br>KFC pizza</br>
+            <br>barbicue chicken pizza</br>
+        </div>
+    </div>
+
+    <div class="contact_us">
+        <h2>Contact details</h2>
+
+        Contact us at:011341231
+        <br>email adress: info@perfectpizza.co.za</br>
+        <br>Facebook: PERFECT-PIZZA</br>
+        <br>Twitter: @Perfect_pizza</br>
+        <br>location: Randburg,Johannesburg</br>
+    </div>
+
+</body>
+
+</html>
