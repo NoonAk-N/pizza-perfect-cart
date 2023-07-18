@@ -22,7 +22,7 @@
     <hr>
     <script src="//unpkg.com/alpinejs" defer></script>
 
-    
+
     <div class="shopping_cart">
         <h1 style="text-align: center;">Order Pizza</h1>
 
@@ -30,7 +30,7 @@
         largeTitle: 'Large', smallPizzaTotal: 0, mediumPizzaTotal: 0,
         largePizzaTotal: 0, totalCostTitle: 'Total Cost', totalCost: 0 }">
             <div class="cart">
-                
+
                 <div class="ss">
                     <span x-text="smallTitle"></span>
                     <button @click=" smallPizzaTotal += 49;">+</button>
@@ -55,60 +55,120 @@
                 <div class="tt">
                     <h1 style="text-align: center;">Pizza Cart</h1>
                     <span x-text="totalCostTitle"></span>
-                    <span x-text="totalCost = smallPizzaTotal + mediumPizzaTotal + largePizzaTotal" ></span>
+                    <span x-text="totalCost = smallPizzaTotal + mediumPizzaTotal + largePizzaTotal"></span>
+                </div>
+            </div>
+            
+            <div x-show="!cartEmpty">
+                <template x-if="totalCost > 0">
+                    <button @click="promptPayment()">Check Out</button>
+                </template>
+            </div>
+    
+            <div x-show="showMessage">
+                <p x-text="message"></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            const data = {
+                smallTitle: 'Small',
+                mediumTitle: 'Medium',
+                largeTitle: 'Large',
+                smallPizzaTotal: 0,
+                mediumPizzaTotal: 0,
+                largePizzaTotal: 0,
+                totalCost: 0,
+                paymentAmount: 0,
+                message: '',
+                showMessage: false,
+                cartEmpty: true,
+                promptPayment() {
+                    let amount = prompt('Enter payment amount:');
+                    let paymentAmount = parseInt(amount);
+                    if (paymentAmount) {
+                        this.paymentAmount = paymentAmount;
+                        this.checkPayment();
+                    }
+                },
+                checkPayment() {
+                    if (this.paymentAmount >= this.totalCost) {
+                        this.message = "Enjoy your pizzas!";
+                        this.clearCart();
+                    } else {
+                        this.message = "Sorry - that is not enough money!";
+                    }
+                    this.showMessage = true;
+                    sleep(3000).then(() => {
+                        this.showMessage = false;
+                    });
+                },
+                clearCart() {
+                    this.smallPizzaTotal = 0;
+                    this.mediumPizzaTotal = 0;
+                    this.largePizzaTotal = 0;
+                    this.totalCost = 0;
+                    this.cartEmpty = true;
+                }
+            };
+            Alpine.data('data', () => data);
+        });
+    </script>
+            <hr>
+            <hr>
+            <div class="pizza small_pizza">
+
+                <h2>Small Pizza</h2>
+                <img src="pizza 22.png" width="100">
+                <h3>R49.00</h3>
+                <div>
+                    <br>small pizza with 3 topping </br>
+                    <br> lover meat pizza</br>
+                    <br>chesse and onion pizza</br>
+                    <br>maxican chicken pizza </br>
                 </div>
             </div>
 
+            <div class="pizza medium_pizza">
+                <h2>Medium Pizza</h2>
+                <img src="pizza 22.png" width="125">
+                <h3>R89.00</h3>
+                <div>
+                    <br>medium pizza with 3 topping </br>
+                    <br> margeritha pizza</br>
+                    <br>vegetables pizza</br>
+                    <br>sweet and sour pizza</br>
+                </div>
+            </div>
 
-    <hr>
-    <hr>
-    <div class="pizza small_pizza">
+            <div class="pizza large_pizza">
+                <h2>Large Pizza</h2>
+                <img src="pizza 22.png" width="150">
+                <h3>R129.00</h3>
+                <div>
+                    <br>large pizza with 3 topping </br>
+                    <br> triple chicken feast pizza</br>
+                    <br>KFC pizza</br>
+                    <br>barbicue chicken pizza</br>
+                </div>
+            </div>
 
-        <h2>Small Pizza</h2>
-        <img src="pizza 22.png" width="100">
-        <h3>R49.00</h3>
-        <div>
-            <br>small pizza with 3 topping </br>
-            <br> lover meat pizza</br>
-            <br>chesse and onion pizza</br>
-            <br>maxican chicken pizza </br>
+            <div class="contact_us">
+                <h2>Contact details</h2>
+
+                Contact us at:011341231
+                <br>email adress: info@perfectpizza.co.za</br>
+                <br>Facebook: PERFECT-PIZZA</br>
+                <br>Twitter: @Perfect_pizza</br> c
+                <br>location: Randburg,Johannesburg</br>
+            </div>
         </div>
-    </div>
-
-    <div class="pizza medium_pizza">
-        <h2>Medium Pizza</h2>
-        <img src="pizza 22.png" width="125">
-        <h3>R89.00</h3>
-        <div>
-            <br>medium pizza with 3 topping </br>
-            <br> margeritha pizza</br>
-            <br>vegetables pizza</br>
-            <br>sweet and sour pizza</br>
-        </div>
-    </div>
-
-    <div class="pizza large_pizza">
-        <h2>Large Pizza</h2>
-        <img src="pizza 22.png" width="150">
-        <h3>R129.00</h3>
-        <div>
-            <br>large pizza with 3 topping </br>
-            <br> triple chicken feast pizza</br>
-            <br>KFC pizza</br>
-            <br>barbicue chicken pizza</br>
-        </div>
-    </div>
-
-    <div class="contact_us">
-        <h2>Contact details</h2>
-
-        Contact us at:011341231
-        <br>email adress: info@perfectpizza.co.za</br>
-        <br>Facebook: PERFECT-PIZZA</br>
-        <br>Twitter: @Perfect_pizza</br>
-        <br>location: Randburg,Johannesburg</br>
-    </div>
-
 </body>
 
 </html>
